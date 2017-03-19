@@ -4,5 +4,5 @@ phases:
   build:
     commands:
       - aws configure set preview.cloudfront true
-      - aws s3 sync --delete . s3://rivernate.com --exclude ".git/*" --exclude ".git*" --exclude "buildspec.yml" --exclude ".editorconfig"
+      - aws s3 sync . s3://rivernate.com --delete --exclude ".*" --exclude "buildspec.yml"
       - aws cloudfront create-invalidation --distribution-id EOUIGQU6TO1F9 --paths /index.html / /css/* /js/* /static/*
