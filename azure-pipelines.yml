@@ -14,6 +14,7 @@ steps:
   inputs:
     SourcePath: '$(build.sourcesDirectory)'
     azureConnectionType: ConnectedServiceNameARM
+    azureSubscription: 'Rivernate Azure'
     Destination: AzureBlob
     storage: rivernate
     ContainerName: '$web'
