@@ -10,8 +10,10 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 steps:
-- task: ArchiveFiles@2
+- task: AzureFileCopy@2
   inputs:
-    rootFolderOrFile: '$(build.sourcesDirectory)'
-    includeRootFolder: false
-- task: PublishBuildArtifacts@1
+    SourcePath: '$(build.sourcesDirectory)'
+    azureConnectionType: ConnectedServiceNameARM
+    Destination: AzureBlob
+    storage: rivernate
+    ContainerName: '$web'
