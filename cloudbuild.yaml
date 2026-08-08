@@ -1,4 +1,0 @@
-steps:
-  - name: gcr.io/cloud-builders/gsutil
-    args: ["-m", "rsync", "-rcd", "-x", "^\\..*|buildspec\\.yml|cloudbuild\\.yaml", "./", "gs://rivernate.com"]
-
