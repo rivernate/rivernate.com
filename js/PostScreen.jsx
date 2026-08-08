@@ -1,4 +1,5 @@
-const {CodeBlock,Callout,Tag,Button,Badge,Icon}=window.RivernateDesignSystem_665cb5;
+const {CodeBlock,Callout,Tag,Button,Badge}=window.RivernateDesignSystem_665cb5;
+const CONTACT_ADDR=['contact','rivernate.com'].join('@');
 
 function PostScreen({post,go}){
   const p=post||window.RN_DATA.posts[0];
@@ -24,8 +25,7 @@ function PostScreen({post,go}){
       <p style={{margin:0}}>Nothing in this post is novel. It is written down because I have now fixed the same three things at three companies.</p>
     </div>
     <div style={{borderTop:'var(--rule)',paddingTop:'var(--sp-4)',display:'flex',gap:'var(--sp-3)',alignItems:'center'}}>
-      <Button size="sm" prefix={<Icon name="rss" size={12} color="var(--text-secondary)"/>} onClick={()=>{window.location.href='/feed.xml'}}>subscribe</Button>
-      <Button size="sm" variant="ghost" onClick={()=>{window.location.href='mailto:river@rivernate.com'}}>reply by email</Button>
+      <Button size="sm" variant="ghost" onClick={()=>{window.location.href='mailto:'+CONTACT_ADDR}}>reply by email</Button>
     </div>
   </article>);
 }
