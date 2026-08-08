@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>rivernate.com — storybook</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+html,body{height:100%}
+body{display:flex}
+.sidebar{width:220px;flex:0 0 220px;border-right:var(--rule);height:100%;overflow-y:auto;padding:var(--sp-4) 0}
+.sidebar h1{font-size:var(--fs-base);padding:0 var(--sp-4) var(--sp-4);margin:0;border-bottom:var(--rule);margin-bottom:var(--sp-3)}
+.sidebar h1 a{border:none;color:var(--text-primary)}
+.group-label{font:var(--fw-medium) var(--fs-micro)/1 var(--font-mono);letter-spacing:var(--ls-caps);text-transform:uppercase;color:var(--text-faint);padding:var(--sp-3) var(--sp-4) var(--sp-2)}
+.item{display:block;padding:6px var(--sp-4);font-size:var(--fs-tiny);color:var(--text-secondary);border:none;cursor:pointer;background:none;text-align:left;width:100%}
+.item:hover{background:var(--surface-hover);color:var(--text-primary)}
+.item.active{color:var(--text-accent);background:var(--green-wash)}
+.viewer{flex:1;height:100%;display:flex;flex-direction:column}
+.viewer-head{border-bottom:var(--rule);padding:var(--sp-3) var(--sp-5);display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:var(--sp-2)}
+.viewer-head .name{font:var(--fw-medium) var(--fs-md)/1 var(--font-display);color:var(--text-primary)}
+.viewer-head .subtitle{font-size:var(--fs-tiny);color:var(--text-muted)}
+iframe{flex:1;width:100%;border:0;background:var(--surface-page)}
+</style>
+</head>
+<body>
+<nav class="sidebar" id="sidebar">
+  <h1><a href="index.html">rivernate.com</a> / storybook</h1>
+</nav>
+<div class="viewer">
+  <div class="viewer-head">
+    <span class="name" id="viewer-name">—</span>
+    <span class="subtitle" id="viewer-subtitle"></span>
+  </div>
+  <iframe id="frame" title="component preview"></iframe>
+</div>
+<script>
+const CARDS=[
+  {group:'Website',name:'rivernate.com',subtitle:'Full click-through MVP — home, writing, post, projects, about',path:'index.html'},
+  {group:'Components',name:'Core',subtitle:'Button, IconButton, Badge, Tag, Card',path:'components/core/core.card.html'},
+  {group:'Components',name:'Content',subtitle:'PostRow — the writing index unit',path:'components/content/content.card.html'},
+  {group:'Components',name:'Feedback',subtitle:'Callout, Dialog, Tooltip',path:'components/feedback/feedback.card.html'},
+  {group:'Components',name:'Forms',subtitle:'Input, Textarea, Select, Checkbox, Switch',path:'components/forms/forms.card.html'},
+  {group:'Components',name:'Navigation',subtitle:'NavBar and Tabs',path:'components/navigation/navigation.card.html'},
+  {group:'Components',name:'Terminal',subtitle:'TerminalWindow, Prompt, CodeBlock',path:'components/terminal/terminal.card.html'},
+  {group:'Components',name:'Theming',subtitle:'ThemeSelector — 10 schemes, 6 fonts',path:'components/theming/theming.card.html'},
+  {group:'Foundations',name:'Tokens',subtitle:'Color, type, spacing, effects',path:'foundations.html'}
+];
+
+const sidebar=document.getElementById('sidebar');
+const frame=document.getElementById('frame');
+const nameEl=document.getElementById('viewer-name');
+const subtitleEl=document.getElementById('viewer-subtitle');
+
+let lastGroup='';
+CARDS.forEach((card,i)=>{
+  if(card.group!==lastGroup){
+    const label=document.createElement('div');
+    label.className='group-label';
+    label.textContent=card.group;
+    sidebar.appendChild(label);
+    lastGroup=card.group;
+  }
+  const btn=document.createElement('button');
+  btn.className='item';
+  btn.textContent=card.name;
+  btn.dataset.index=i;
+  btn.addEventListener('click',()=>select(i));
+  sidebar.appendChild(btn);
+});
+
+function select(i){
+  const card=CARDS[i];
+  frame.src=card.path;
+  nameEl.textContent=card.name;
+  subtitleEl.textContent=card.subtitle;
+  document.querySelectorAll('.item').forEach(el=>el.classList.toggle('active',Number(el.dataset.index)===i));
+  window.location.hash=card.path;
+}
+
+const fromHash=CARDS.findIndex(c=>c.path===window.location.hash.slice(1));
+select(fromHash!==-1?fromHash:0);
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+/* Font schemes. Set data-font on <html>. Default (unset) is Geist Mono + Azeret Mono. */
+[data-font="jetbrains"]{--font-mono:"JetBrains Mono",ui-monospace,monospace;--font-display:"JetBrains Mono",ui-monospace,monospace}
+[data-font="ibm-plex"]{--font-mono:"IBM Plex Mono",ui-monospace,monospace;--font-display:"IBM Plex Mono",ui-monospace,monospace}
+[data-font="fira"]{--font-mono:"Fira Code",ui-monospace,monospace;--font-display:"Fira Code",ui-monospace,monospace}
+[data-font="source"]{--font-mono:"Source Code Pro",ui-monospace,monospace;--font-display:"Source Code Pro",ui-monospace,monospace}
+[data-font="space"]{--font-mono:"Space Mono",ui-monospace,monospace;--font-display:"Space Mono",ui-monospace,monospace}

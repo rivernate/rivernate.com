@@ -1,0 +1,23 @@
+:root{
+--font-mono:"Geist Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+--font-display:"Azeret Mono","Geist Mono",ui-monospace,monospace;
+--font-body:var(--font-mono);
+--fw-light:300;
+--fw-regular:400;
+--fw-medium:500;
+--fw-semibold:600;
+--fw-bold:700;
+/* type scale — terminal rows, 13px base */
+--fs-micro:11px;--fs-tiny:12px;--fs-base:13px;--fs-md:14px;--fs-lg:16px;--fs-xl:20px;
+--fs-h3:26px;--fs-h2:34px;--fs-h1:46px;--fs-display:64px;
+--lh-tight:1.1;
+--lh-snug:1.35;
+--lh-body:1.6;
+--lh-loose:1.8;
+--ls-display:-0.03em;
+--ls-heading:-0.015em;
+--ls-body:0;
+--ls-caps:0.14em;
+--row:24px;
+--ch:0.6em;
+}

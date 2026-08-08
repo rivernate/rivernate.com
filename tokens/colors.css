@@ -1,0 +1,56 @@
+:root{
+/* ---- base ramps ---- */
+--ink-900:#08090a;--ink-850:#0b0d0f;--ink-800:#101316;--ink-750:#171b1f;--ink-700:#1f242a;--ink-650:#23282e;--ink-600:#333a41;
+--slate-500:#454c52;--slate-400:#6b7379;--slate-300:#a7aeb5;--slate-200:#c9ced3;--slate-100:#e8eaed;
+--paper-100:#f6f4ee;--paper-200:#eae7de;--paper-300:#d8d4c8;
+/* ---- phosphor accent ---- */
+--green-bright:#33ff66;--green:#2fe05c;--green-mid:#1f8f3c;--green-dim:#14562a;--green-wash:rgba(51,255,102,.10);
+/* ---- signal hues (ANSI-adjacent, desaturated for screen) ---- */
+--amber:#ffb000;--amber-wash:rgba(255,176,0,.10);
+--red:#ff5c5c;--red-wash:rgba(255,92,92,.10);
+--cyan:#3ddbd9;--cyan-wash:rgba(61,219,217,.10);
+--violet:#a78bfa;--violet-wash:rgba(167,139,250,.10);
+/* ---- semantic: surfaces ---- */
+--surface-page:var(--ink-850);
+--surface-card:var(--ink-800);
+--surface-raised:var(--ink-750);
+--surface-hover:var(--ink-700);
+--surface-inset:var(--ink-900);
+--surface-accent:var(--green-wash);
+/* ---- semantic: text ---- */
+--text-primary:var(--slate-100);
+--text-secondary:var(--slate-300);
+--text-muted:var(--slate-400);
+--text-faint:var(--slate-500);
+--text-accent:var(--green-bright);
+--text-inverse:var(--ink-900);
+/* ---- semantic: lines ---- */
+--border-subtle:var(--ink-650);
+--border-strong:var(--ink-600);
+--border-accent:var(--green-mid);
+--focus-ring:var(--green-bright);
+/* ---- semantic: status ---- */
+--status-ok:var(--green);--status-warn:var(--amber);--status-error:var(--red);--status-info:var(--cyan);
+--caret:var(--green-bright);
+--selection-bg:rgba(51,255,102,.22);
+}
+[data-theme="paper"]{
+--surface-page:var(--paper-100);
+--surface-card:#fffdf8;
+--surface-raised:#fffdf8;
+--surface-hover:var(--paper-200);
+--surface-inset:var(--paper-200);
+--surface-accent:rgba(15,122,51,.08);
+--text-primary:#14171a;
+--text-secondary:#3b4247;
+--text-muted:#6b7279;
+--text-faint:#9aa0a5;
+--text-accent:#0f7a33;
+--text-inverse:#fffdf8;
+--border-subtle:var(--paper-300);
+--border-strong:#b9b3a4;
+--border-accent:#0f7a33;
+--focus-ring:#0f7a33;
+--caret:#0f7a33;
+--selection-bg:rgba(15,122,51,.18);
+}

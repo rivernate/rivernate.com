@@ -1,0 +1,20 @@
+:root{
+/* corners stay near-square: this is a terminal, not a card UI */
+--radius-0:0px;--radius-1:2px;--radius-2:3px;--radius-pill:999px;
+--border-1:1px;
+--border-2:2px;
+--rule:1px solid var(--border-subtle);
+/* no drop shadows. depth = borders + phosphor glow */
+--glow-green:0 0 0 1px var(--green-mid),0 0 28px -10px rgba(51,255,102,.55);
+--glow-soft:0 0 24px -12px rgba(51,255,102,.45);
+--shadow-modal:0 24px 64px -24px rgba(0,0,0,.8);
+--dur-fast:90ms;
+--dur-base:160ms;
+--dur-slow:280ms;
+--ease-out:cubic-bezier(.2,0,0,1);
+--ease-step:steps(1,end);
+--scanline:repeating-linear-gradient(180deg,rgba(255,255,255,.018) 0 1px,transparent 1px 3px);
+--grid-dot:radial-gradient(circle at 1px 1px,var(--border-subtle) 1px,transparent 0);
+}
+@keyframes rn-blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes rn-type{from{width:0}to{width:100%}}

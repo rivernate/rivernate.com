@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Foundations</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+body{padding:var(--sp-6);background:var(--surface-page);display:flex;flex-direction:column;gap:var(--sp-9)}
+.section-label{font:var(--fw-medium) var(--fs-micro)/1 var(--font-mono);letter-spacing:var(--ls-caps);text-transform:uppercase;color:var(--text-muted);border-bottom:var(--rule);padding-bottom:var(--sp-2);margin-bottom:var(--sp-4)}
+.swatch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:var(--sp-3)}
+.swatch{height:64px;border:1px solid var(--border-subtle);border-radius:var(--radius-1);display:flex;align-items:flex-end;padding:6px}
+.swatch-label{font-size:var(--fs-micro);color:var(--text-faint)}
+.swatch-name{font-size:var(--fs-tiny);color:var(--text-secondary);margin-top:6px}
+.type-row{display:flex;align-items:baseline;gap:var(--sp-4);border-bottom:var(--rule);padding:var(--sp-2) 0}
+.type-row .tok{width:110px;flex:0 0 110px;font-size:var(--fs-tiny);color:var(--text-faint)}
+.space-row{display:flex;align-items:center;gap:var(--sp-3);padding:4px 0}
+.space-row .tok{width:80px;flex:0 0 80px;font-size:var(--fs-tiny);color:var(--text-faint)}
+.space-bar{height:12px;background:var(--green-mid)}
+</style>
+</head>
+<body>
+<a href="storybook.html" style="border:none;font-size:var(--fs-tiny)">&lt;- storybook</a>
+
+<section>
+  <div class="section-label">Colors — neutral ramp</div>
+  <div class="swatch-grid">
+    <div><div class="swatch" style="background:var(--ink-900)"><span class="swatch-label">#08090a</span></div><div class="swatch-name">--ink-900</div></div>
+    <div><div class="swatch" style="background:var(--ink-850)"><span class="swatch-label">#0b0d0f</span></div><div class="swatch-name">--ink-850 (page)</div></div>
+    <div><div class="swatch" style="background:var(--ink-800)"><span class="swatch-label">#101316</span></div><div class="swatch-name">--ink-800 (card)</div></div>
+    <div><div class="swatch" style="background:var(--ink-700)"><span class="swatch-label">#1f242a</span></div><div class="swatch-name">--ink-700 (hover)</div></div>
+    <div><div class="swatch" style="background:var(--slate-300)"><span class="swatch-label" style="color:#08090a">#a7aeb5</span></div><div class="swatch-name">--slate-300</div></div>
+    <div><div class="swatch" style="background:var(--slate-100)"><span class="swatch-label" style="color:#08090a">#e8eaed</span></div><div class="swatch-name">--slate-100 (primary text)</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">Colors — phosphor accent &amp; signal</div>
+  <div class="swatch-grid">
+    <div><div class="swatch" style="background:var(--green-bright)"><span class="swatch-label" style="color:#08090a">#33ff66</span></div><div class="swatch-name">--green-bright</div></div>
+    <div><div class="swatch" style="background:var(--green)"><span class="swatch-label" style="color:#08090a">#2fe05c</span></div><div class="swatch-name">--green</div></div>
+    <div><div class="swatch" style="background:var(--amber)"><span class="swatch-label" style="color:#08090a">#ffb000</span></div><div class="swatch-name">--amber</div></div>
+    <div><div class="swatch" style="background:var(--red)"><span class="swatch-label" style="color:#08090a">#ff5c5c</span></div><div class="swatch-name">--red</div></div>
+    <div><div class="swatch" style="background:var(--cyan)"><span class="swatch-label" style="color:#08090a">#3ddbd9</span></div><div class="swatch-name">--cyan</div></div>
+    <div><div class="swatch" style="background:var(--violet)"><span class="swatch-label" style="color:#08090a">#a78bfa</span></div><div class="swatch-name">--violet</div></div>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">Type scale</div>
+  <div class="type-row"><span class="tok">--fs-micro 11</span><span style="font-size:var(--fs-micro)">the quick brown fox</span></div>
+  <div class="type-row"><span class="tok">--fs-tiny 12</span><span style="font-size:var(--fs-tiny)">the quick brown fox</span></div>
+  <div class="type-row"><span class="tok">--fs-base 13</span><span style="font-size:var(--fs-base)">the quick brown fox</span></div>
+  <div class="type-row"><span class="tok">--fs-md 14</span><span style="font-size:var(--fs-md)">the quick brown fox</span></div>
+  <div class="type-row"><span class="tok">--fs-lg 16</span><span style="font-size:var(--fs-lg)">the quick brown fox</span></div>
+  <div class="type-row"><span class="tok">--fs-xl 20</span><span style="font-size:var(--fs-xl)">the quick brown fox</span></div>
+  <div class="type-row"><span class="tok">--fs-h3 26</span><span style="font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:var(--fs-h3)">the quick brown fox</span></div>
+  <div class="type-row"><span class="tok">--fs-h2 34</span><span style="font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:var(--fs-h2)">the quick brown fox</span></div>
+  <div class="type-row"><span class="tok">--fs-h1 46</span><span style="font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:var(--fs-h1)">the quick brown</span></div>
+</section>
+
+<section>
+  <div class="section-label">Spacing scale</div>
+  <div class="space-row"><span class="tok">--sp-1 4px</span><div class="space-bar" style="width:var(--sp-1)"></div></div>
+  <div class="space-row"><span class="tok">--sp-2 8px</span><div class="space-bar" style="width:var(--sp-2)"></div></div>
+  <div class="space-row"><span class="tok">--sp-3 12px</span><div class="space-bar" style="width:var(--sp-3)"></div></div>
+  <div class="space-row"><span class="tok">--sp-4 16px</span><div class="space-bar" style="width:var(--sp-4)"></div></div>
+  <div class="space-row"><span class="tok">--sp-5 20px</span><div class="space-bar" style="width:var(--sp-5)"></div></div>
+  <div class="space-row"><span class="tok">--sp-6 24px</span><div class="space-bar" style="width:var(--sp-6)"></div></div>
+  <div class="space-row"><span class="tok">--sp-7 32px</span><div class="space-bar" style="width:var(--sp-7)"></div></div>
+  <div class="space-row"><span class="tok">--sp-8 40px</span><div class="space-bar" style="width:var(--sp-8)"></div></div>
+  <div class="space-row"><span class="tok">--sp-9 56px</span><div class="space-bar" style="width:var(--sp-9)"></div></div>
+</section>
+
+<section>
+  <div class="section-label">Radii &amp; motion</div>
+  <div style="display:flex;gap:var(--sp-4);flex-wrap:wrap;align-items:center">
+    <div style="width:64px;height:64px;background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius-1);display:flex;align-items:center;justify-content:center;font-size:var(--fs-micro);color:var(--text-faint)">2px</div>
+    <div style="width:64px;height:64px;background:var(--surface-card);border:1px solid var(--border-subtle);border-radius:var(--radius-2);display:flex;align-items:center;justify-content:center;font-size:var(--fs-micro);color:var(--text-faint)">3px</div>
+    <div style="width:64px;height:64px;background:var(--surface-card);border:1px solid var(--green-mid);box-shadow:var(--glow-soft);border-radius:var(--radius-1);display:flex;align-items:center;justify-content:center;font-size:var(--fs-micro);color:var(--text-faint)">glow</div>
+  </div>
+</section>
+</body>
+</html>

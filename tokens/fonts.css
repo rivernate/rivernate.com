@@ -1,0 +1,5 @@
+/* Geist Mono + Azeret Mono, served from Google Fonts.
+   No local binaries were provided; see readme.md > Typography. */
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@300;400;500;600;700&family=Azeret+Mono:wght@400;500;600;700&display=swap");
+/* alternates offered by the theme selector */
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600;700&family=Source+Code+Pro:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap");

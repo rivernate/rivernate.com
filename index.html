@@ -1,49 +1,58 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>rivernate.com</title>
-  <meta name="description" content="rivernate.com" />
-  <style>
-    :root {
-      color-scheme: light dark;
-      --fg: #111;
-      --bg: #fff;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root { --fg: #eee; --bg: #0b0b0b; }
-    }
-    html, body {
-      height: 100%;
-      margin: 0;
-    }
-    body {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: var(--bg);
-      color: var(--fg);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-    }
-    main {
-      text-align: center;
-    }
-    h1 {
-      font-size: 1.5rem;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-    }
-    p {
-      opacity: 0.6;
-      font-size: 0.95rem;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>rivernate.com</title>
+<meta name="description" content="river nate — backend engineer. distributed systems, postgres, and build times.">
+<link rel="stylesheet" href="styles.css">
+<style>html,body{height:100%}</style>
 </head>
 <body>
-  <main>
-    <h1>rivernate.com</h1>
-    <p>Rebuilding — check back soon.</p>
-  </main>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="_ds_bundle.js"></script>
+<script src="data.js"></script>
+<script type="text/babel" src="js/Shell.jsx"></script>
+<script type="text/babel" src="js/HomeScreen.jsx"></script>
+<script type="text/babel" src="js/WritingScreen.jsx"></script>
+<script type="text/babel" src="js/PostScreen.jsx"></script>
+<script type="text/babel" src="js/ProjectsScreen.jsx"></script>
+<script type="text/babel" src="js/AboutScreen.jsx"></script>
+<script type="text/babel">
+function parseHash(){
+  const h=window.location.hash.replace(/^#\/?/,'');
+  if(!h) return {route:'home'};
+  if(h.indexOf('post/')===0){
+    const slug=h.slice(5);
+    const post=window.RN_DATA.posts.find(p=>p.slug===slug);
+    return {route:'post',post:post||window.RN_DATA.posts[0]};
+  }
+  if(['writing','projects','about'].indexOf(h)!==-1) return {route:h};
+  return {route:'home'};
+}
+
+function App(){
+  const [state,setState]=React.useState(parseHash());
+  React.useEffect(()=>{
+    const onHashChange=()=>{setState(parseHash());window.scrollTo(0,0)};
+    window.addEventListener('hashchange',onHashChange);
+    return ()=>window.removeEventListener('hashchange',onHashChange);
+  },[]);
+  const go=(route,post)=>{
+    window.location.hash=route==='post'&&post?'/post/'+post.slug:route==='home'?'/':'/'+route;
+  };
+  return (<Shell route={state.route} go={go}>
+    {state.route==='home'?<HomeScreen go={go}/>:null}
+    {state.route==='writing'?<WritingScreen go={go}/>:null}
+    {state.route==='post'?<PostScreen post={state.post} go={go}/>:null}
+    {state.route==='projects'?<ProjectsScreen/>:null}
+    {state.route==='about'?<AboutScreen/>:null}
+  </Shell>);
+}
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
 </body>
 </html>
