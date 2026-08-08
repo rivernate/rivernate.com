@@ -1,4 +1,4 @@
-const {TerminalWindow,Prompt,Input,Textarea,Button,Checkbox,Callout,Dialog,Select}=window.RivernateDesignSystem_665cb5;
+const {TerminalWindow,Prompt,Input,Textarea,Button,Checkbox,Callout,Dialog,Select,IconButton,Tooltip}=window.RivernateDesignSystem_665cb5;
 
 function AboutScreen(){
   const [sent,setSent]=React.useState(false);
@@ -8,11 +8,16 @@ function AboutScreen(){
     <TerminalWindow title="~/about">
       <Prompt command="cat bio.txt"/>
       <div style={{color:'var(--text-secondary)',maxWidth:'var(--measure)'}}>
-        river nate. ten years writing backends, most of them in rust and go. I like systems that are
-        legible at 3am and boring the rest of the time.
+        Nathan Mills. backend and infrastructure engineer. I like systems that are legible at 3am
+        and boring the rest of the time.
       </div>
       <div style={{marginTop:'var(--sp-3)'}}><Prompt command="uname -a"/></div>
-      <div style={{color:'var(--text-muted)'}}>berlin · utc+2 · replies within a week</div>
+      <div style={{color:'var(--text-muted)'}}>NixOS (flakes) · Hyprland · zsh</div>
+      <div style={{marginTop:'var(--sp-3)'}}><Prompt command="cat contact.txt"/></div>
+      <div style={{display:'flex',alignItems:'center',gap:'var(--sp-3)'}}>
+        <span style={{color:'var(--text-muted)'}}>salt lake city · replies within a week</span>
+        <Tooltip label="linkedin"><IconButton name="linkedin" label="LinkedIn" size="sm" variant="ghost" onClick={()=>window.open('https://www.linkedin.com/in/nathan-mills/','_blank')}/></Tooltip>
+      </div>
     </TerminalWindow>
 
     <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'var(--sp-6)'}}>
@@ -31,7 +36,7 @@ function AboutScreen(){
           There is an RSS feed and nothing else. No analytics, no cookie banner, no popup.
         </Callout>
         <Callout tone="accent" title="uses">
-          Framework 13 running arch · sway · neovim · tmux · Geist Mono at 13px · a mechanical keyboard I regret.
+          NixOS, configured declaratively with flakes · Hyprland · Neovim · zsh · tmux.
         </Callout>
       </div>
     </div>
