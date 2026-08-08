@@ -30,7 +30,9 @@ function HomeScreen({go}){
 
     <div>
       <SectionHead label="selected writing" action="all posts ->" onAction={()=>go('writing')}/>
-      {posts.map(p=><PostRow key={p.slug} {...p} href="#" onClick={e=>{e.preventDefault();go('post',p)}}/>)}
+      {posts.length
+        ?posts.map(p=><PostRow key={p.slug} {...p} href="#" onClick={e=>{e.preventDefault();go('post',p)}}/>)
+        :<div style={{padding:'var(--sp-4) 0',color:'var(--text-faint)'}}>nothing published yet.</div>}
     </div>
 
     <div style={{display:'flex',gap:'var(--sp-3)',alignItems:'center',flexWrap:'wrap'}}>

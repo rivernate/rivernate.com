@@ -2,6 +2,12 @@ const {CodeBlock,Callout,Tag,Button,Badge,Icon}=window.RivernateDesignSystem_665
 
 function PostScreen({post,go}){
   const p=post||window.RN_DATA.posts[0];
+  if(!p){
+    return (<div style={{display:'flex',flexDirection:'column',gap:'var(--sp-4)'}}>
+      <a href="#" onClick={e=>{e.preventDefault();go('writing')}} style={{fontSize:'var(--fs-tiny)',border:'none'}}>&lt;- writing</a>
+      <div style={{color:'var(--text-faint)'}}>post not found.</div>
+    </div>);
+  }
   return (<article style={{display:'flex',flexDirection:'column',gap:'var(--sp-5)'}}>
     <a href="#" onClick={e=>{e.preventDefault();go('writing')}} style={{fontSize:'var(--fs-tiny)',border:'none'}}>&lt;- writing</a>
     <div style={{display:'flex',gap:'var(--sp-4)',alignItems:'center',fontSize:'var(--fs-tiny)',color:'var(--text-faint)'}}>
