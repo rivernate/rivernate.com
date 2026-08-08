@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>rivernate.com</title>
 <meta name="description" content="river nate — backend engineer. distributed systems, postgres, and build times.">
+<script>
+(function(){
+  try{
+    var s=JSON.parse(localStorage.getItem('rn-scheme'))||{};
+    if(s.theme) document.documentElement.setAttribute('data-theme',s.theme);
+    if(s.font) document.documentElement.setAttribute('data-font',s.font);
+  }catch(e){}
+})();
+</script>
 <link rel="stylesheet" href="styles.css">
 <style>html,body{height:100%}</style>
 </head>
