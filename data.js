@@ -14,8 +14,7 @@ identity:RN_IDENTITY,
 resume:{
   name:RN_IDENTITY.name,
   tagline:'backend & infrastructure engineer · engineering team lead',
-  summary:'~19 years of backend and infrastructure engineering, the last 14+ in ed-tech (since Nov 2012) — cloud infrastructure, data platforms, and standards work (LTI, OpenID Connect).',
-  email:RN_IDENTITY.contactEmail,
+  summary:'~19 years of backend and infrastructure engineering, the last 13+ in ed-tech (since Nov 2012) — cloud infrastructure, data platforms, and standards work (LTI, OpenID Connect).',
   experience:[
     {
       company:'Derivita',

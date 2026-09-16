@@ -24,7 +24,7 @@ function AboutScreen(){
       <div style={{marginTop:'var(--sp-3)'}}><Prompt command="cat contact.txt"/></div>
       <div style={{display:'flex',alignItems:'center',gap:'var(--sp-3)'}}>
         <span style={{color:'var(--text-muted)'}}>{identity.location} · replies within a week</span>
-        <Tooltip label="linkedin"><IconButton name="linkedin" label="LinkedIn" size="sm" variant="ghost" onClick={()=>window.open(identity.linkedin,'_blank')}/></Tooltip>
+        <Tooltip label="linkedin"><IconButton name="linkedin" label="LinkedIn" size="sm" variant="ghost" onClick={()=>window.open(identity.linkedin,'_blank','noopener,noreferrer')}/></Tooltip>
       </div>
     </TerminalWindow>
 

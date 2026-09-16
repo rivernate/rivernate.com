@@ -13,7 +13,7 @@ function Shell({route,go,children}){
       <NavBar items={['writing','projects','resume','about']} active={route==='post'?'writing':route} onNavigate={go}
         right={<>
           <ThemeSelector theme={scheme.theme} font={scheme.font} onChange={setScheme}/>
-          <Tooltip label="github" side="bottom"><IconButton name="github" label="GitHub" size="sm" variant="ghost" onClick={()=>window.open('https://github.com/rivernate','_blank')}/></Tooltip>
+          <Tooltip label="github" side="bottom"><IconButton name="github" label="GitHub" size="sm" variant="ghost" onClick={()=>window.open('https://github.com/rivernate','_blank','noopener,noreferrer')}/></Tooltip>
         </>}/>
       <main style={{flex:1,width:'100%',maxWidth:'var(--content-max)',margin:'0 auto',padding:'var(--sp-9) var(--sp-6) var(--sp-11)'}}>{children}</main>
       <footer style={{borderTop:'var(--rule)',padding:'var(--sp-5) var(--sp-6)'}}>
