@@ -1,8 +1,7 @@
 const {TerminalWindow,Prompt,Input,Textarea,Button,Checkbox,Callout,Select,IconButton,Tooltip}=window.RivernateDesignSystem_665cb5;
 
-const CONTACT_ADDR=['contact','rivernate.com'].join('@');
-
 function AboutScreen(){
+  const identity=window.RN_DATA.identity;
   const [cc,setCc]=React.useState(true);
   const [form,setForm]=React.useState({name:'',email:'',reason:'a post',message:''});
   const set=(k)=>(e)=>setForm(f=>({...f,[k]:e.target.value}));
@@ -10,26 +9,26 @@ function AboutScreen(){
     e.preventDefault();
     const subject=encodeURIComponent('rivernate.com — '+form.reason+(form.name?' — '+form.name:''));
     const body=encodeURIComponent(form.message+(form.email?'\n\n— '+form.email:''));
-    window.location.href='mailto:'+CONTACT_ADDR+'?subject='+subject+'&body='+body+(cc&&form.email?'&cc='+encodeURIComponent(form.email):'');
+    window.location.href='mailto:'+identity.contactEmail+'?subject='+subject+'&body='+body+(cc&&form.email?'&cc='+encodeURIComponent(form.email):'');
   };
   return (<div style={{display:'flex',flexDirection:'column',gap:'var(--sp-7)'}}>
     <h1 style={{fontSize:'var(--fs-h2)'}}>about</h1>
     <TerminalWindow title="~/about">
       <Prompt command="cat bio.txt"/>
       <div style={{color:'var(--text-secondary)',maxWidth:'var(--measure)'}}>
-        Nathan Mills. backend and infrastructure engineer. I like systems that are legible at 3am
+        {identity.name}. backend and infrastructure engineer. I like systems that are legible at 3am
         and boring the rest of the time.
       </div>
       <div style={{marginTop:'var(--sp-3)'}}><Prompt command="uname -a"/></div>
       <div style={{color:'var(--text-muted)'}}>NixOS (flakes) · Hyprland · zsh</div>
       <div style={{marginTop:'var(--sp-3)'}}><Prompt command="cat contact.txt"/></div>
       <div style={{display:'flex',alignItems:'center',gap:'var(--sp-3)'}}>
-        <span style={{color:'var(--text-muted)'}}>salt lake city · replies within a week</span>
-        <Tooltip label="linkedin"><IconButton name="linkedin" label="LinkedIn" size="sm" variant="ghost" onClick={()=>window.open('https://www.linkedin.com/in/nathan-mills/','_blank')}/></Tooltip>
+        <span style={{color:'var(--text-muted)'}}>{identity.location} · replies within a week</span>
+        <Tooltip label="linkedin"><IconButton name="linkedin" label="LinkedIn" size="sm" variant="ghost" onClick={()=>window.open(identity.linkedin,'_blank')}/></Tooltip>
       </div>
     </TerminalWindow>
 
-    <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'var(--sp-6)'}}>
+    <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(280px,1fr))',gap:'var(--sp-6)'}}>
       <form style={{display:'flex',flexDirection:'column',gap:'var(--sp-4)'}} onSubmit={submit}>
         <span style={{font:'var(--fw-medium) var(--fs-micro)/1 var(--font-mono)',letterSpacing:'var(--ls-caps)',
           textTransform:'uppercase',color:'var(--text-muted)'}}>get in touch</span>

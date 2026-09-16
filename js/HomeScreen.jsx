@@ -16,14 +16,14 @@ function HomeScreen({go}){
     <TerminalWindow title="~" scanlines glow>
       <Prompt command="whoami"/>
       <div style={{color:'var(--text-primary)',fontSize:'var(--fs-lg)',lineHeight:'var(--row)',margin:'var(--sp-2) 0'}}>
-        river nate — backend engineer. distributed systems, postgres, and build times.
+        river nate — backend and infrastructure engineer. distributed systems, data pipelines, and build times.
       </div>
       <div style={{color:'var(--text-muted)',maxWidth:'var(--measure)'}}>
-        currently at a payments company, working on the ledger. previously infrastructure at two startups you have not heard of.
+        currently: engineering team lead building cloud infrastructure and data platforms in ed-tech. ~19 years writing software, most of it backend and infra.
       </div>
       <div style={{marginTop:'var(--sp-3)'}}><Prompt command="cat now.txt"/></div>
       <div style={{color:'var(--text-secondary)',maxWidth:'var(--measure)'}}>
-        reading the raft paper again. writing a queue in sql. not looking for work.
+        terraform, GCP, and a lot of postgres. slowly finishing this site.
       </div>
       <div style={{marginTop:'var(--sp-3)'}}><Prompt command="" caret/></div>
     </TerminalWindow>
@@ -38,6 +38,7 @@ function HomeScreen({go}){
     <div style={{display:'flex',gap:'var(--sp-3)',alignItems:'center',flexWrap:'wrap'}}>
       <Button variant="primary" prefix="->" onClick={()=>go('projects')}>projects</Button>
       <Button onClick={()=>go('about')}>about</Button>
+      <Button onClick={()=>go('resume')}>resume</Button>
       <span style={{marginLeft:'auto',display:'flex',alignItems:'center',gap:8,fontSize:'var(--fs-tiny)',color:'var(--text-faint)'}}>
         <Icon name="git-branch" size={13} color="var(--text-faint)"/> main
       </span>

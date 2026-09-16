@@ -10,7 +10,7 @@ function Shell({route,go,children}){
     try{localStorage.setItem('rn-scheme',JSON.stringify(scheme))}catch(e){}},[scheme]);
   return (
     <div style={{minHeight:'100%',background:'var(--surface-page)',display:'flex',flexDirection:'column'}}>
-      <NavBar items={['writing','projects','about']} active={route==='post'?'writing':route} onNavigate={go}
+      <NavBar items={['writing','projects','resume','about']} active={route==='post'?'writing':route} onNavigate={go}
         right={<>
           <ThemeSelector theme={scheme.theme} font={scheme.font} onChange={setScheme}/>
           <Tooltip label="github" side="bottom"><IconButton name="github" label="GitHub" size="sm" variant="ghost" onClick={()=>window.open('https://github.com/rivernate','_blank')}/></Tooltip>

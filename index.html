@@ -29,6 +29,7 @@
 <script type="text/babel" src="js/WritingScreen.jsx"></script>
 <script type="text/babel" src="js/PostScreen.jsx"></script>
 <script type="text/babel" src="js/ProjectsScreen.jsx"></script>
+<script type="text/babel" src="js/ResumeScreen.jsx"></script>
 <script type="text/babel" src="js/AboutScreen.jsx"></script>
 <script type="text/babel">
 function parseHash(){
@@ -39,7 +40,7 @@ function parseHash(){
     const post=window.RN_DATA.posts.find(p=>p.slug===slug);
     return {route:'post',post:post||window.RN_DATA.posts[0]};
   }
-  if(['writing','projects','about'].indexOf(h)!==-1) return {route:h};
+  if(['writing','projects','resume','about'].indexOf(h)!==-1) return {route:h};
   return {route:'home'};
 }
 
@@ -58,6 +59,7 @@ function App(){
     {state.route==='writing'?<WritingScreen go={go}/>:null}
     {state.route==='post'?<PostScreen post={state.post} go={go}/>:null}
     {state.route==='projects'?<ProjectsScreen/>:null}
+    {state.route==='resume'?<ResumeScreen/>:null}
     {state.route==='about'?<AboutScreen/>:null}
   </Shell>);
 }
