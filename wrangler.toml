@@ -3,3 +3,9 @@ compatibility_date = "2026-08-08"
 
 [assets]
 directory = "."
+
+[env.preview]
+name = "rivernate-com-preview"
+routes = [
+  { pattern = "preview.rivernate.com", custom_domain = true }
+]
