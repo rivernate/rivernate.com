@@ -8,3 +8,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 h1,h2,h3,h4{font-family:var(--font-display);font-weight:var(--fw-semibold);letter-spacing:var(--ls-heading);line-height:var(--lh-tight);margin:0}
 code,pre,kbd{font-family:var(--font-mono)}
 hr{border:0;border-top:var(--rule);margin:var(--sp-7) 0}
+
+/* NavBar's root <nav> never wraps its flex children — at narrow widths the
+   brand link, nav items, and right-side controls overflow the viewport and
+   force horizontal page scroll. NavBar does forward a className, but this
+   overrides its own inline `style` (height/padding/gap), so !important is
+   still required either way; `:not(.sidebar)` excludes storybook.html's
+   unrelated <nav class="sidebar"> element, which shares this stylesheet. */
+@media (max-width:560px){
+  nav:not(.sidebar){flex-wrap:wrap;height:auto!important;padding:var(--sp-3) var(--sp-4)!important;gap:var(--sp-3)!important}
+  nav:not(.sidebar)>div{flex-wrap:wrap;gap:var(--sp-2)!important}
+}
