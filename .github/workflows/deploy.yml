@@ -3,10 +3,26 @@ name: Deploy
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch: {}
+
+concurrency:
+  # preview.rivernate.com is one shared URL across every open PR (not
+  # per-branch), so pull_request deploys queue on a single constant group
+  # rather than one keyed on head_ref. cancel-in-progress is deliberately
+  # false: cancelling would leave whichever PR got cancelled without a
+  # redeploy until its next push, so runs queue and each one still lands.
+  group: deploy-${{ github.event_name == 'pull_request' && 'preview' || 'production' }}
+  cancel-in-progress: false
 
 jobs:
   deploy:
+    # A pull_request from a fork never receives secrets.CLOUDFLARE_API_TOKEN
+    # (GitHub Actions only withholds it for pull_request, not
+    # pull_request_target), so without this guard the step would just fail
+    # with an empty token instead of skipping cleanly.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -15,5 +31,10 @@ jobs:
       - uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3.15.0
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: deploy
+          command: deploy${{ github.event_name == 'pull_request' && ' --env preview' || '' }}
           wranglerVersion: "4.133.0"
+      # Access policy for preview.rivernate.com is configured separately in the
+      # Cloudflare Zero Trust dashboard, not in this repo — don't assert it's
+      # live here, since this job can't verify it.
+      - if: github.event_name == 'pull_request'
+        run: echo "Deployed ${GITHUB_SHA::7} to https://preview.rivernate.com (shared URL — may be overwritten by another PR)" >> "$GITHUB_STEP_SUMMARY"
