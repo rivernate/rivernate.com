@@ -55,7 +55,7 @@ changing site-related DNS.
 
 **Routing:** `index.html` is the single entry point. It boots a React `App` component
 that does client-side hash routing (`#/`, `#/writing`, `#/post/<slug>`, `#/projects`,
-`#/about`) — there is no server-side routing and no other page-serving HTML file
+`#/resume`, `#/about`) — there is no server-side routing and no other page-serving HTML file
 except `storybook.html` and `foundations.html` (see below).
 
 **Load order matters** in `index.html`: React/ReactDOM/Babel CDN scripts, then
@@ -73,7 +73,7 @@ in place here (a one-off exception was made for `js/AboutScreen.jsx`'s copy, whi
 site content, not a component).
 
 **`js/*.jsx` are page screens**, one per route (`HomeScreen`, `WritingScreen`,
-`PostScreen`, `ProjectsScreen`, `AboutScreen`), plus `Shell.jsx` which owns the
+`PostScreen`, `ProjectsScreen`, `ResumeScreen`, `AboutScreen`), plus `Shell.jsx` which owns the
 `NavBar`, the theme/font selector (persisted to `localStorage` under `rn-scheme`,
 applied via `data-theme`/`data-font` attributes on `<html>`), and the footer. Each
 screen file ends with `Object.assign(window, {...})` to expose its component globally
